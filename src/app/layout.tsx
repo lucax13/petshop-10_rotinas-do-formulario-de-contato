@@ -29,6 +29,12 @@ export const metadata: Metadata = {
       url: "https://github.com/tiagotecinternet24",
     },
   ],
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "petShop",
+  },
 };
 
 export default function RootLayout({

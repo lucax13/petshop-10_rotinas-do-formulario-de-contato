@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Lucas",
-      url: "https://github.com/tiagotecinternet24",
+      url: "https://github.com/lucax13",
     },
   ],
   manifest: "/manifest.json",

@@ -1,28 +1,26 @@
-// src/app/contato/page.tsx
-import Container from "@/components/Container";
-import estilos from "./contato.module.css";
-import { Metadata } from "next";
-import Formulario from "@/components/Formulario";
+// src/app/page.tsx
+import ListaPosts from "@/components/ListaPosts";
+import estilos from "./page.module.css";
+import { Post } from "@/types/Post";
+import SemPosts from "@/components/SemPosts";
 
-export const metadata: Metadata = {
-  title: "Contato | PetShop",
-  description: "Fale conosco...",
-};
+// Importando os recursos da lib supabase
+import { supabase } from "@/lib/supabase";
 
-export default function Contato() {
+export default async function Home() {
+  const { data, error } = await supabase.from("posts").select("*");
+
+  if (error) {
+    throw new Error("Erro ao buscar os posts: " + error.message);
+  }
+
+  const posts: Post[] = data;
+
   return (
     <section className={estilos.conteudo}>
-      <h2>Contato</h2>
-      <Container>
-        <p>
-          Você pode nos enviar um e-mail para{" "}
-          <a href="mailto:contato@petshop.com">contato@petshop.com</a> ou nos
-          ligar pelo telefone <a href="tel:+5511999999999">+55 11 99999-9999</a>
-        </p>
+      <h2>Pet Notícias</h2>
 
-        <p>Se preferir, use o formulário abaixo:</p>
-        <Formulario />
-      </Container>
+      {posts.length === 0 ? <SemPosts /> : <ListaPosts posts={posts} />}
     </section>
   );
 }

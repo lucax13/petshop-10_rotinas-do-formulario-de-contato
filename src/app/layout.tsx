@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   keywords: ["petshop", "animais", "cachorros", "gatos"],
   authors: [
     {
-      name: "Tiago",
+      name: "Lucas",
       url: "https://github.com/tiagotecinternet24",
     },
   ],
